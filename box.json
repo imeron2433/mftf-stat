@@ -1,0 +1,7 @@
+{
+  "directories": ["src", "vendor"],
+  "chmod": "0755",
+  "main": "bin/mftf-cli",
+  "output": "mftf-cli.phar",
+  "stub": true
+}

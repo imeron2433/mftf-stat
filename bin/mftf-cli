@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+
+<?php
+require_once  '../vendor/autoload.php';
+
+$_ENV['MAGENTO_BASE_URL'] = 'http://google.com';
+define('MAGENTO_BASE_URL', 'http://google.com');
+
+$application = new Symfony\Component\Console\Application();
+$application->setName('Magento Testing Framework Stat CLI');
+$application->setVersion('1.0.0');
+$application->add(new MftfCli\Command\StatCommand());
+$application->add(new MftfCli\Command\EnvSetupCommand());
+$application->add(new MftfCli\Command\ListSkippedTestsCommand());
+$application->run();
