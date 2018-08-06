@@ -1,0 +1,47 @@
+{
+  "name": "magento/mftf-stat_cli",
+  "description": "Magento 2 (Open Source)",
+  "type": "project",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "git@github.com:magento/magento2-functional-testing-framework.git"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "MftfCli\\": "src/MftfCli"
+    }
+  },
+  "require": {
+    "magento/magento2-functional-testing-framework": "~2.2.0",
+    "symfony/console": "^4.1",
+    "symfony/filesystem": "^4.1",
+    "symfony/process": "^4.1"
+  },
+  "replace": {
+    "allure-framework/allure-codeception": "*",
+    "consolidation/robo": "*",
+    "codeception/codeception": "*",
+    "mustache/mustache": "*",
+    "fzaninotto/faker": "*",
+    "flow/jsonpath": "*",
+    "doctrine/lexer": "*",
+    "doctrine/annotations": "*",
+    "doctrine/collections": "*",
+    "doctrine/instantiator": "*",
+    "phpcollection/phpcollection": "*",
+    "jms/parser-lib": "*",
+    "jms/metadata": "*",
+    "jms/serializer": "*",
+    "epfremme/swagger-php": "*"
+  }
+}
