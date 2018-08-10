@@ -22,7 +22,6 @@
     }
   },
   "require": {
-    "magento/magento2-functional-testing-framework": "~2.2.0",
     "symfony/console": "^4.1",
     "symfony/filesystem": "^4.1",
     "symfony/process": "^4.1"

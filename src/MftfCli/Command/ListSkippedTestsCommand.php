@@ -64,7 +64,7 @@ class ListSkippedTestsCommand extends Command
         // render the table and format the skipped output
         $table = new Table($output);
         $table = $this->formatSkippedTests($table);
-        $table->setHeaders(['module', 'test', 'filepath']);
+        $table->setHeaders(['module', 'test', 'ticket', 'filepath']);
         $table->render();
     }
 
@@ -79,7 +79,8 @@ class ListSkippedTestsCommand extends Command
         foreach ($allTests as $testObject) {
             if ($testObject->isSkipped()) {
                  $filePath = $testObject->getFilename();
-                $table->addRow([$moduleNameExtractor->extractModuleName($filePath), $testObject->getName(), $filePath]);
+                 $ticket = $testObject->getAnnotations()['skip'][0] ?? null;
+                $table->addRow([$moduleNameExtractor->extractModuleName($filePath), $testObject->getName(), $ticket,  $filePath]);
             }
         }
 

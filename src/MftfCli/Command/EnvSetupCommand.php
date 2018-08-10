@@ -96,7 +96,7 @@ class EnvSetupCommand extends Command
             $output->writeln('cloning missing repo: ' . $missingRepo . '...');
             $cloneProject = new Process("git clone " . self::GIT_REPOS[$missingRepo]);
             $cloneProject->setTimeout(0);
-            $cloneProject->setIdleTimeout(300);
+            $cloneProject->setIdleTimeout(0);
             $cloneProject->setWorkingDirectory($projectDir);
             $cloneProject->run(function ($type, $buffer) use ($output) {
                 if ($output->isDebug()) {
@@ -115,7 +115,7 @@ class EnvSetupCommand extends Command
         $unlinkProjectsProcess = new Process('php magento2ee/dev/tools/build-ee.php --command unlink');
         $unlinkProjectsProcess->setWorkingDirectory($projectDir);
         $unlinkProjectsProcess->setTimeout(0);
-        $unlinkProjectsProcess->setIdleTimeout(300);
+        $unlinkProjectsProcess->setIdleTimeout(0);
         $unlinkProjectsProcess->run(function ($type, $buffer) use ($output) {
             if ($output->isDebug()) {
                 $output->write($buffer);
@@ -133,7 +133,7 @@ class EnvSetupCommand extends Command
                 'git fetch && git checkout origin/' . self::GIT_BRANCHES[$repoName]);
             $updateGitProject->setWorkingDirectory($projectDir . $repoName);
             $updateGitProject->setTimeout(0);
-            $updateGitProject->setIdleTimeout(300);
+            $updateGitProject->setIdleTimeout(0);
             $updateGitProject->run(function ($type, $buffer) use ($output) {
                 if ($output->isDebug()) {
                     $output->write($buffer);
@@ -160,7 +160,7 @@ class EnvSetupCommand extends Command
         $installDependencies = new Process('composer install');
         $installDependencies->setWorkingDirectory($installDir);
         $installDependencies->setTimeout(0);
-        $installDependencies->setIdleTimeout(300);
+        $installDependencies->setIdleTimeout(0);
         $installDependencies->run(function ($type, $buffer) use ($output) {
             if ($output->isDebug()) {
                 $output->write($buffer);
@@ -175,7 +175,7 @@ class EnvSetupCommand extends Command
             $symlinkCmd = new Process('php magento2ee/dev/tools/build-ee.php --ee-source ' . $proj);
             $symlinkCmd->setWorkingDirectory($projectDir);
             $symlinkCmd->setTimeout(0);
-            $symlinkCmd->setIdleTimeout(300);
+            $symlinkCmd->setIdleTimeout(0);
             $symlinkCmd->run(function ($type, $buffer) use ($output) {
                 if ($output->isDebug()) {
                     $output->write($buffer);
